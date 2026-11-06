@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>赛程赛果 · 红魔看台</title>
+  <meta name="description" content="曼联 2026–27 赛季完整赛程与真实比分，支持按赛事、状态筛选并记录观赛打卡。">
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta property="og:title" content="赛程赛果 · 红魔看台">
+  <meta property="og:description" content="曼联完整赛程与真实比分，可筛选、可打卡。">
+  <meta property="og:image" content="https://qianniu2007.github.io/red-devils-stand/images/og-image.jpg">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="index.html">
+        <span class="crest">MU</span>
+        <span>红魔看台<small>RED DEVILS STAND</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="切换菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="schedule.html">赛程赛果</a>
+        <a href="squad.html">一线队</a>
+        <a href="legends.html">队史传奇</a>
+        <a href="notes.html">观赛笔记</a>
+        <a href="about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-title">
+      <div class="container">
+        <h1>赛程赛果</h1>
+        <p>2026–27 赛季全部 38 轮英超与已知欧冠赛程，比分来自公开赛果。点“标记已看”可以记录你追过哪场，数据存在你自己的浏览器里。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- 筛选栏 -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-group="comp" data-value="ALL">全部赛事</button>
+          <button class="filter-btn" data-group="comp" data-value="PL">英超</button>
+          <button class="filter-btn" data-group="comp" data-value="UCL">欧冠</button>
+          <span style="width:18px;"></span>
+          <button class="filter-btn active" data-group="status" data-value="ALL">全部</button>
+          <button class="filter-btn" data-group="status" data-value="PLAYED">已赛</button>
+          <button class="filter-btn" data-group="status" data-value="UNPLAYED">未赛</button>
+        </div>
+
+        <div id="match-list" class="match-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html">
+            <span class="crest">MU</span>
+            <span>红魔看台</span>
+          </a>
+          <p>一个普通球迷手写的非官方站点，纯 HTML、CSS、JavaScript 实现，与曼彻斯特联足球俱乐部无官方关联。</p>
+        </div>
+        <div>
+          <h4>内容</h4>
+          <ul>
+            <li><a href="schedule.html">赛程赛果</a></li>
+            <li><a href="squad.html">一线队</a></li>
+            <li><a href="legends.html">队史传奇</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>关于</h4>
+          <ul>
+            <li><a href="notes.html">观赛笔记</a></li>
+            <li><a href="about.html">关于本站</a></li>
+            <li><a href="index.html">回到首页</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> 红魔看台 · 个人学习项目</span>
+        <span>Glory Glory Man United</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="回到顶部">↑</button>
+  <script src="data/team-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/schedule.js"></script>
+</body>
+</html>
