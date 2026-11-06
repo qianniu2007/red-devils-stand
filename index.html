@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>红魔看台 · 曼联中文球迷站 | 首页</title>
+  <meta name="description" content="一个普通曼联球迷自己写的中文站：真实赛程、一线队阵容、队史传奇与原创观赛笔记，全部手写并托管在 GitHub。">
+
+  <!-- 站点图标 -->
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- 分享卡片 -->
+  <meta property="og:title" content="红魔看台 · 曼联中文球迷站">
+  <meta property="og:description" content="真实赛程、阵容、队史与原创观赛笔记，一个普通球迷手写的中文站。">
+  <meta property="og:image" content="https://qianniu2007.github.io/red-devils-stand/images/og-image.jpg">
+  <meta property="og:url" content="https://qianniu2007.github.io/red-devils-stand/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== 顶部导航 ===== -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="index.html">
+        <span class="crest">MU</span>
+        <span>红魔看台<small>RED DEVILS STAND</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="切换菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="schedule.html">赛程赛果</a>
+        <a href="squad.html">一线队</a>
+        <a href="legends.html">队史传奇</a>
+        <a href="notes.html">观赛笔记</a>
+        <a href="about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">2026–27 赛季 · 个人球迷站</span>
+        <h1>梦想剧场，<br>红魔看台开门了。</h1>
+        <p class="lead">
+          这里没有复制粘贴的教程，也没有一键生成的套话。我是一个普通曼联球迷，
+          把真实的赛程、阵容、队史一点点整理出来，再把自己看球时的真实想法写成笔记——
+          赢了一起狂，输了也不装死。
+        </p>
+        <div class="hero-actions">
+          <a href="schedule.html" class="btn btn-primary">查看赛程赛果 →</a>
+          <a href="notes.html" class="btn btn-ghost">读我的观赛笔记</a>
+        </div>
+
+        <!-- 战绩快照 -->
+        <div class="stat-strip">
+          <div class="stat-cell"><div class="v">16</div><div class="k">联赛排名</div></div>
+          <div class="stat-cell"><div class="v">9</div><div class="k">已赛场次</div></div>
+          <div class="stat-cell"><div class="v">1</div><div class="k">胜</div></div>
+          <div class="stat-cell"><div class="v">4</div><div class="k">平</div></div>
+          <div class="stat-cell"><div class="v">4</div><div class="k">负</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 下一场倒计时 ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="countdown-card reveal">
+          <div class="match-meta">
+            <div class="comp">PREMIER LEAGUE · 英超第 10 轮</div>
+            <h3>曼联 vs 阿斯顿维拉</h3>
+            <p>11 月 8 日 周日 16:30 · 老特拉福德</p>
+          </div>
+          <div id="countdown" aria-label="距离比赛的倒计时"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 板块入口 ===== -->
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="tag">看台地图</span>
+          <h2>四个板块，把曼联看个明白</h2>
+          <p>数据是真的，功能是能用的，不是摆着好看的静态卡片。</p>
+        </div>
+        <div class="grid grid-4">
+          <article class="card module-card reveal">
+            <div class="icon">📅</div>
+            <div class="card-body">
+              <h3>赛程赛果</h3>
+              <p>完整 38 轮赛程与真实比分，可按赛事和已赛、未赛筛选，还能打卡记录看过哪场。</p>
+              <a class="go" href="schedule.html">去看赛程</a>
+            </div>
+          </article>
+          <article class="card module-card reveal">
+            <div class="icon">👕</div>
+            <div class="card-body">
+              <h3>一线队</h3>
+              <p>30 名一线队球员，号码、位置、国籍一目了然，支持按位置筛选和实时搜索。</p>
+              <a class="go" href="squad.html">认识球员</a>
+            </div>
+          </article>
+          <article class="card module-card reveal">
+            <div class="icon">🏆</div>
+            <div class="card-body">
+              <h3>队史传奇</h3>
+              <p>荣誉墙、百年时间线和传奇人物，从 1878 年的牛顿希斯走到今天。</p>
+              <a class="go" href="legends.html">回顾队史</a>
+            </div>
+          </article>
+          <article class="card module-card reveal">
+            <div class="icon">✍️</div>
+            <div class="card-body">
+              <h3>观赛笔记</h3>
+              <p>这个站最“我”的地方：每一篇都是我自己看球后的真实记录，不端着、不洗地。</p>
+              <a class="go" href="notes.html">读点真话</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 数据看赛季 ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2" style="align-items:center; gap:44px;">
+          <div class="reveal">
+            <span class="tag">诚实面对</span>
+            <h2 style="margin-bottom:18px;">九轮过后，我们确实在降级区</h2>
+            <p style="color:var(--muted); margin-bottom:16px;">
+              不吹不黑，前九轮 1 胜 4 平 4 负、只拿到 7 分，排名第 16。主场 0–3 输给伯恩茅斯、
+              客场 0–2 不敌切尔西，进攻 9 轮只进 10 球，问题摆在台面上。
+            </p>
+            <p style="color:var(--muted);">
+              但球迷这关不会因为几场败仗就散。我会在<a href="notes.html" style="color:var(--red-dark);font-weight:700;">观赛笔记</a>
+              里逐场记录，看看这支球队到底能不能爬起来。
+            </p>
+          </div>
+          <div class="reveal">
+            <div class="card">
+              <div class="card-body">
+                <h3>赛季数据速览</h3>
+                <ul class="tech-list" style="border:none; padding:0;">
+                  <li><span>进球 / 失球</span><span>10 / 13</span></li>
+                  <li><span>净胜球</span><span>-3</span></li>
+                  <li><span>唯一胜场</span><span>主场 5–2 伊普斯维奇</span></li>
+                  <li><span>平局</span><span>4 场（埃弗顿、富勒姆、热刺、利兹）</span></li>
+                  <li><span>下一场</span><span>11/8 主场 vs 维拉</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html">
+            <span class="crest">MU</span>
+            <span>红魔看台</span>
+          </a>
+          <p>一个普通球迷手写的非官方站点，纯 HTML、CSS、JavaScript 实现，与曼彻斯特联足球俱乐部无官方关联。</p>
+        </div>
+        <div>
+          <h4>内容</h4>
+          <ul>
+            <li><a href="schedule.html">赛程赛果</a></li>
+            <li><a href="squad.html">一线队</a></li>
+            <li><a href="legends.html">队史传奇</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>关于</h4>
+          <ul>
+            <li><a href="notes.html">观赛笔记</a></li>
+            <li><a href="about.html">关于本站</a></li>
+            <li><a href="index.html">回到首页</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> 红魔看台 · 个人学习项目</span>
+        <span>Glory Glory Man United</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="回到顶部">↑</button>
+  <script src="data/team-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
