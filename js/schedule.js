@@ -1,6 +1,7 @@
 /* ============================================================
-   红魔看台 · 赛程页脚本
-   数据渲染、按赛事/状态筛选、观赛打卡（localStorage 持久化）。
+   Red Devils Stand · Schedule page script
+   Data rendering, competition/status filters and the watched
+   check-in (persisted in localStorage).
    ============================================================ */
 
 (function () {
@@ -12,7 +13,7 @@
   var WATCH_KEY = "rds_watched_ids";
   var filters = { comp: "ALL", status: "ALL" };
 
-  /* ---------- 读取已打卡列表 ---------- */
+  /* ---------- Read the watched list ---------- */
   function getWatched() {
     try { return JSON.parse(localStorage.getItem(WATCH_KEY)) || []; }
     catch (e) { return []; }
@@ -24,19 +25,21 @@
     return m.date + "|" + m.home + "|" + m.away;
   }
 
-  /* ---------- 日期格式化 ---------- */
-  var WEEK = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+  /* ---------- Date formatting ---------- */
+  var WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   function fmtDate(iso) {
     var d = new Date(iso);
     var t = d.getHours() + ":" + String(d.getMinutes()).padStart(2, "0");
     return {
-      d: (d.getMonth() + 1) + "月" + d.getDate() + "日",
+      d: MONTHS[d.getMonth()] + " " + d.getDate(),
       w: WEEK[d.getDay()],
       t: t
     };
   }
 
-  /* ---------- 判断曼联胜负 ---------- */
+  /* ---------- United's result ---------- */
   function unitedResult(m) {
     var home = RDS.isUnitedHome(m);
     var us = home ? m.homeScore : m.awayScore;
@@ -46,13 +49,13 @@
     return "L";
   }
 
-  /* ---------- 单场 HTML ---------- */
+  /* ---------- Single match HTML ---------- */
   function rowHTML(m) {
     var dt = fmtDate(m.date);
     var watched = getWatched().indexOf(matchId(m)) !== -1;
     var isHome = RDS.isUnitedHome(m);
 
-    // 徽章
+    // Badge
     var badge = "";
     if (m.played) {
       if (m.pending) {
@@ -67,20 +70,20 @@
       badge = '<span class="badge ucl">' + (m.competition === "UCL" ? "★" : "•") + "</span>";
     }
 
-    // 比分
+    // Score
     var score;
     if (m.played && !m.pending && m.homeScore !== null) {
       score = '<span class="score">' + m.homeScore + " : " + m.awayScore + "</span>";
     } else if (m.played && m.pending) {
-      score = '<span class="score unplayed">完赛</span>';
+      score = '<span class="score unplayed">Full time</span>';
     } else {
       score = '<span class="score unplayed">VS</span>';
     }
 
-    // 队名（曼联加主/客标记）
+    // Team name (United get a home/away tag)
     function teamLabel(name) {
       if (name === "Manchester United") {
-        return name + '<span class="u-tag">' + (isHome ? "主" : "客") + "</span>";
+        return name + '<span class="u-tag">' + (isHome ? "H" : "A") + "</span>";
       }
       return name;
     }
@@ -95,16 +98,16 @@
           '<span class="match-team away">' + teamLabel(m.away) + "</span>" +
         "</div>" +
         '<div class="match-right">' +
-          '<span class="match-venue">' + (m.competition === "UCL" ? "欧冠 · " : "") + m.venue + "</span>" +
+          '<span class="match-venue">' + (m.competition === "UCL" ? "UCL · " : "") + m.venue + "</span>" +
           '<button class="check-btn' + (watched ? " watched" : "") + '" data-id="' + matchId(m) + '">' +
-            (watched ? "✓ 已看" : "标记已看") +
+            (watched ? "✓ Watched" : "Mark as watched") +
           "</button>" +
         "</div>" +
       "</article>"
     );
   }
 
-  /* ---------- 渲染（带筛选）---------- */
+  /* ---------- Render (with filters) ---------- */
   function render() {
     var data = RDS.fixtures.filter(function (m) {
       if (filters.comp !== "ALL" && m.competition !== filters.comp) return false;
@@ -114,13 +117,13 @@
     });
 
     if (!data.length) {
-      listEl.innerHTML = '<div class="empty-note">这个筛选条件下暂时没有比赛。</div>';
+      listEl.innerHTML = '<div class="empty-note">No matches for this filter yet.</div>';
       return;
     }
     listEl.innerHTML = data.map(rowHTML).join("");
   }
 
-  /* ---------- 筛选按钮事件 ---------- */
+  /* ---------- Filter button events ---------- */
   document.querySelectorAll(".filter-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var group = btn.getAttribute("data-group");
@@ -134,7 +137,7 @@
     });
   });
 
-  /* ---------- 打卡按钮（事件委托）---------- */
+  /* ---------- Watched button (event delegation) ---------- */
   listEl.addEventListener("click", function (e) {
     var btn = e.target.closest(".check-btn");
     if (!btn) return;
@@ -144,11 +147,11 @@
     if (idx === -1) {
       watched.push(id);
       btn.classList.add("watched");
-      btn.textContent = "✓ 已看";
+      btn.textContent = "✓ Watched";
     } else {
       watched.splice(idx, 1);
       btn.classList.remove("watched");
-      btn.textContent = "标记已看";
+      btn.textContent = "Mark as watched";
     }
     saveWatched(watched);
   });

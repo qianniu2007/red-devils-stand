@@ -1,6 +1,7 @@
 /* ============================================================
-   红魔看台 · 一线队脚本
-   球员卡片渲染、按位置筛选、按姓名/国籍实时搜索。
+   Red Devils Stand · Squad page script
+   Player card rendering, position filters and live search by
+   name / nationality.
    ============================================================ */
 
 (function () {
@@ -10,15 +11,15 @@
   var searchEl = document.getElementById("squad-search");
   if (!gridEl || typeof RDS === "undefined") return;
 
-  var POS_CN = { GK: "门将", DF: "后卫", MF: "中场", FW: "前锋" };
+  var POS_EN = { GK: "Goalkeeper", DF: "Defender", MF: "Midfielder", FW: "Forward" };
   var currentPos = "ALL";
 
-  /* ---------- 单个球员卡片 ---------- */
+  /* ---------- Single player card ---------- */
   function cardHTML(p) {
     return (
       '<article class="player-card reveal in">' +
-        '<span class="pos-tag">' + POS_CN[p.position] + "</span>" +
-        (p.captain ? '<span class="captain" title="队长">© 队长</span>' : "") +
+        '<span class="pos-tag">' + POS_EN[p.position] + "</span>" +
+        (p.captain ? '<span class="captain" title="Captain">© Captain</span>' : "") +
         '<div class="number">' + String(p.number).padStart(2, "0") + "</div>" +
         '<div class="pname">' + p.name + "</div>" +
         '<div class="nation">' + p.nation + " · " + p.nationCode + "</div>" +
@@ -26,7 +27,7 @@
     );
   }
 
-  /* ---------- 渲染（筛选 + 搜索）---------- */
+  /* ---------- Render (filters + search) ---------- */
   function render() {
     var keyword = searchEl ? searchEl.value.trim().toLowerCase() : "";
 
@@ -40,13 +41,13 @@
     });
 
     if (!data.length) {
-      gridEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1;">没有找到匹配的球员，换个关键词试试。</div>';
+      gridEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1;">No matching players found. Try a different keyword.</div>';
       return;
     }
     gridEl.innerHTML = data.map(cardHTML).join("");
   }
 
-  /* ---------- 位置筛选 ---------- */
+  /* ---------- Position filters ---------- */
   document.querySelectorAll(".filter-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       currentPos = btn.getAttribute("data-value");
@@ -58,7 +59,7 @@
     });
   });
 
-  /* ---------- 实时搜索 ---------- */
+  /* ---------- Live search ---------- */
   if (searchEl) {
     searchEl.addEventListener("input", render);
   }

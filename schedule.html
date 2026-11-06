@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>赛程赛果 · 红魔看台</title>
-  <meta name="description" content="曼联 2026–27 赛季完整赛程与真实比分，支持按赛事、状态筛选并记录观赛打卡。">
+  <title>Fixtures &amp; Results · Red Devils Stand</title>
+  <meta name="description" content="Manchester United's full 2026–27 fixtures and real results, with competition and status filters and a way to mark the games you watched.">
   <link rel="icon" href="images/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <meta property="og:title" content="赛程赛果 · 红魔看台">
-  <meta property="og:description" content="曼联完整赛程与真实比分，可筛选、可打卡。">
+  <meta property="og:title" content="Fixtures &amp; Results · Red Devils Stand">
+  <meta property="og:description" content="Full fixtures and real results — filterable and checkable.">
   <meta property="og:image" content="https://qianniu2007.github.io/red-devils-stand/images/og-image.jpg">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/style.css">
@@ -19,18 +19,18 @@
     <div class="container nav-bar">
       <a class="brand" href="index.html">
         <span class="crest">MU</span>
-        <span>红魔看台<small>RED DEVILS STAND</small></span>
+        <span>Red Devils Stand<small>RED DEVILS STAND</small></span>
       </a>
-      <button class="nav-toggle" aria-label="切换菜单" aria-expanded="false">
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <nav class="nav-links" aria-label="主导航">
-        <a href="index.html">首页</a>
-        <a href="schedule.html">赛程赛果</a>
-        <a href="squad.html">一线队</a>
-        <a href="legends.html">队史传奇</a>
-        <a href="notes.html">观赛笔记</a>
-        <a href="about.html">关于</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="schedule.html">Fixtures &amp; Results</a>
+        <a href="squad.html">Squad</a>
+        <a href="legends.html">History &amp; Legends</a>
+        <a href="notes.html">Match Notes</a>
+        <a href="about.html">About</a>
       </nav>
     </div>
   </header>
@@ -38,22 +38,22 @@
   <main>
     <section class="page-title">
       <div class="container">
-        <h1>赛程赛果</h1>
-        <p>2026–27 赛季全部 38 轮英超与已知欧冠赛程，比分来自公开赛果。点“标记已看”可以记录你追过哪场，数据存在你自己的浏览器里。</p>
+        <h1>Fixtures &amp; Results</h1>
+        <p>All 38 Premier League matchweeks of the 2026&ndash;27 season plus the known Champions League fixtures, with scores taken from public results. Hit &ldquo;Mark as watched&rdquo; to keep track of the games you followed &mdash; the data stays in your own browser.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <!-- 筛选栏 -->
+        <!-- Filter bar -->
         <div class="filter-bar">
-          <button class="filter-btn active" data-group="comp" data-value="ALL">全部赛事</button>
-          <button class="filter-btn" data-group="comp" data-value="PL">英超</button>
-          <button class="filter-btn" data-group="comp" data-value="UCL">欧冠</button>
+          <button class="filter-btn active" data-group="comp" data-value="ALL">All competitions</button>
+          <button class="filter-btn" data-group="comp" data-value="PL">Premier League</button>
+          <button class="filter-btn" data-group="comp" data-value="UCL">Champions League</button>
           <span style="width:18px;"></span>
-          <button class="filter-btn active" data-group="status" data-value="ALL">全部</button>
-          <button class="filter-btn" data-group="status" data-value="PLAYED">已赛</button>
-          <button class="filter-btn" data-group="status" data-value="UNPLAYED">未赛</button>
+          <button class="filter-btn active" data-group="status" data-value="ALL">All</button>
+          <button class="filter-btn" data-group="status" data-value="PLAYED">Played</button>
+          <button class="filter-btn" data-group="status" data-value="UNPLAYED">Unplayed</button>
         </div>
 
         <div id="match-list" class="match-list"></div>
@@ -67,35 +67,35 @@
         <div>
           <a class="brand" href="index.html">
             <span class="crest">MU</span>
-            <span>红魔看台</span>
+            <span>Red Devils Stand</span>
           </a>
-          <p>一个普通球迷手写的非官方站点，纯 HTML、CSS、JavaScript 实现，与曼彻斯特联足球俱乐部无官方关联。</p>
+          <p>An unofficial, hand-written fan site built with plain HTML, CSS and JavaScript. Not affiliated with Manchester United Football Club.</p>
         </div>
         <div>
-          <h4>内容</h4>
+          <h4>Content</h4>
           <ul>
-            <li><a href="schedule.html">赛程赛果</a></li>
-            <li><a href="squad.html">一线队</a></li>
-            <li><a href="legends.html">队史传奇</a></li>
+            <li><a href="schedule.html">Fixtures &amp; Results</a></li>
+            <li><a href="squad.html">Squad</a></li>
+            <li><a href="legends.html">History &amp; Legends</a></li>
           </ul>
         </div>
         <div>
-          <h4>关于</h4>
+          <h4>About</h4>
           <ul>
-            <li><a href="notes.html">观赛笔记</a></li>
-            <li><a href="about.html">关于本站</a></li>
-            <li><a href="index.html">回到首页</a></li>
+            <li><a href="notes.html">Match Notes</a></li>
+            <li><a href="about.html">About this site</a></li>
+            <li><a href="index.html">Back home</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span data-year>2026</span> 红魔看台 · 个人学习项目</span>
+        <span>&copy; <span data-year>2026</span> Red Devils Stand &middot; Personal learning project</span>
         <span>Glory Glory Man United</span>
       </div>
     </div>
   </footer>
 
-  <button class="to-top" aria-label="回到顶部">↑</button>
+  <button class="to-top" aria-label="Back to top">&uarr;</button>
   <script src="data/team-data.js"></script>
   <script src="js/main.js"></script>
   <script src="js/schedule.js"></script>

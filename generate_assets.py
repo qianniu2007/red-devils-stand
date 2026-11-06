@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-红魔看台 · 视觉资产生成脚本
-用 Pillow 手绘 favicon、apple-touch-icon 与 OG 分享图。
-不使用任何官方队徽，全部为原创几何图形 + 文字。
+Red Devils Stand · Visual asset generator
+Hand-drawn favicon, apple-touch-icon and OG share image with Pillow.
+No official club crest is used — all original geometric shapes + text.
 """
 import os
 from PIL import Image, ImageDraw, ImageFont
@@ -19,7 +19,7 @@ GOLD_SOFT = (227, 199, 102)
 WHITE = (255, 255, 255)
 
 FONT_BOLD = r"C:\Windows\Fonts\arialbd.ttf"
-FONT_CN = r"C:\Windows\Fonts\simhei.ttf"
+FONT_REG = r"C:\Windows\Fonts\arial.ttf"
 
 
 def font(path, size):
@@ -30,7 +30,7 @@ def font(path, size):
 
 
 def draw_stripes(draw, w, h, step=46):
-    """看台斜纹：在红色底上叠一层半透明深色条纹。"""
+    """Stand stripes: a layer of translucent dark stripes over red."""
     overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     od = ImageDraw.Draw(overlay)
     for x in range(-h, w + h, step):
@@ -41,7 +41,7 @@ def draw_stripes(draw, w, h, step=46):
 
 
 def shield_points(cx, cy, scale):
-    """以 (cx,cy) 为中心、scale 为整体尺寸的盾形顶点。"""
+    """Shield points centred on (cx, cy), sized by scale."""
     hw = scale * 0.34
     top = cy - scale * 0.36
     bottom_v = cy + scale * 0.40
@@ -52,8 +52,8 @@ def shield_points(cx, cy, scale):
 
 
 def make_icon(size):
-    """生成一个正方形图标（红色圆角底 + 深色盾 + 白 MU + 金边）。"""
-    S = size * 8  # 超采样，最后缩小，边缘更平滑
+    """A square icon (rounded red base + dark shield + white MU + gold edge)."""
+    S = size * 8  # Supersample, then shrink for smoother edges
     img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
 
@@ -61,16 +61,16 @@ def make_icon(size):
     d.rounded_rectangle([0, 0, S - 1, S - 1], radius=radius, fill=RED)
     img.alpha_composite(draw_stripes(d, S, S, step=S // 6))
 
-    # 金色描边
+    # Gold outline
     d.rounded_rectangle([int(S*0.05), int(S*0.05), S-int(S*0.05), S-int(S*0.05)],
                         radius=int(radius*0.8), outline=GOLD, width=max(3, S//70))
 
-    # 深色盾形
+    # Dark shield
     pts = shield_points(S // 2, S // 2, S * 0.62)
     d.polygon(pts, fill=INK)
     d.line(pts + [pts[0]], fill=GOLD_SOFT, width=max(3, S//80))
 
-    # 盾内 MU
+    # MU inside the shield
     f = font(FONT_BOLD, int(S * 0.34))
     text = "MU"
     tb = d.textbbox((0, 0), text, font=f)
@@ -82,35 +82,35 @@ def make_icon(size):
 
 
 def make_og(w=1200, h=630):
-    """生成社交分享图。"""
+    """Build the social share image."""
     img = Image.new("RGBA", (w, h), RED)
     d = ImageDraw.Draw(img)
     img.alpha_composite(draw_stripes(d, w, h, step=70))
 
-    # 左侧深色竖块
+    # Gold bar on the left
     d.rectangle([0, 0, 14, h], fill=GOLD)
 
-    # 右上小盾
-    crest = make_icon(200)
-    img.alpha_composite(crest, (w - 260, 70))
+    # Small shield in the top right
+    crest = make_icon(150)
+    img.alpha_composite(crest, (w - 205, 60))
 
-    # 主标题（中文）
-    f_cn = font(FONT_CN, 118)
-    d.text((70, 150), "红魔看台", font=f_cn, fill=WHITE)
+    # Main title (English)
+    f_title = font(FONT_BOLD, 72)
+    d.text((70, 150), "RED DEVILS STAND", font=f_title, fill=WHITE)
 
-    # 副标题（含中文，用黑体以保证中文正常）
-    f_sub = font(FONT_CN, 38)
-    d.text((74, 300), "RED DEVILS STAND · 曼联中文球迷站",
+    # Subtitle
+    f_sub = font(FONT_BOLD, 38)
+    d.text((74, 278), "A MANCHESTER UNITED FAN SITE",
            font=f_sub, fill=GOLD_SOFT)
 
-    # 分隔线
-    d.line([74, 372, 760, 372], fill=(255, 255, 255, 120), width=3)
+    # Divider
+    d.line([74, 350, 820, 350], fill=(255, 255, 255, 120), width=3)
 
-    # 底部技术说明
-    f_foot = font(FONT_CN, 30)
-    d.text((74, 400), "真实赛程 · 一线队 · 队史传奇 · 原创观赛笔记",
+    # Feature line
+    f_foot = font(FONT_REG, 32)
+    d.text((74, 380), "Real fixtures · First team · History & legends · Original match notes",
            font=f_foot, fill=(255, 255, 255))
-    f_small = font(FONT_BOLD, 26)
+    f_small = font(FONT_REG, 26)
     d.text((74, h - 70), "Hand-written HTML · CSS · JavaScript  ·  Hosted on GitHub Pages",
            font=f_small, fill=(255, 220, 200))
 
@@ -118,13 +118,13 @@ def make_og(w=1200, h=630):
 
 
 def main():
-    # favicon 32
+    # Favicon 32
     make_icon(32).save(os.path.join(IMG, "favicon-32.png"))
-    # apple touch icon 180
+    # Apple touch icon 180
     make_icon(180).save(os.path.join(IMG, "apple-touch-icon.png"))
-    # 额外一个 64 的 favicon 备用
+    # An extra 64 favicon as backup
     make_icon(64).save(os.path.join(IMG, "favicon-64.png"))
-    # OG 图
+    # OG image
     og = make_og().convert("RGB")
     og.save(os.path.join(IMG, "og-image.jpg"), quality=88)
     print("assets generated:")

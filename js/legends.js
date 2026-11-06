@@ -1,13 +1,14 @@
 /* ============================================================
-   红魔看台 · 队史页脚本
-   渲染荣誉墙、百年时间线与传奇球员，数据全部来自 RDS。
+   Red Devils Stand · History page script
+   Renders the honours wall, century-long timeline and legend
+   players, all from RDS.
    ============================================================ */
 
 (function () {
   "use strict";
   if (typeof RDS === "undefined") return;
 
-  /* ---------- 荣誉墙 ---------- */
+  /* ---------- Honours wall ---------- */
   var honourEl = document.getElementById("honour-grid");
   if (honourEl) {
     honourEl.innerHTML = RDS.honours.map(function (h) {
@@ -21,7 +22,7 @@
     }).join("");
   }
 
-  /* ---------- 时间线 ---------- */
+  /* ---------- Timeline ---------- */
   var timelineEl = document.getElementById("timeline");
   if (timelineEl) {
     timelineEl.innerHTML = RDS.timeline.map(function (t) {
@@ -35,7 +36,7 @@
     }).join("");
   }
 
-  /* ---------- 传奇球员 ---------- */
+  /* ---------- Legend players ---------- */
   var legendEl = document.getElementById("legend-grid");
   if (legendEl) {
     legendEl.innerHTML = RDS.legends.map(function (l) {
@@ -43,7 +44,7 @@
         '<article class="legend-card reveal in">' +
           '<div class="era">' + l.era + "</div>" +
           "<h3>" + l.name + "</h3>" +
-          '<div class="lpos">' + l.cn + " · " + l.position + "</div>" +
+          '<div class="lpos">' + l.position + "</div>" +
           "<p>" + l.text + "</p>" +
         "</article>"
       );

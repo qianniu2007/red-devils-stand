@@ -1,0 +1,15 @@
+200  7262  index.html
+200  3570  schedule.html
+200  3436  squad.html
+200  4572  legends.html
+200  4213  notes.html
+200  4433  about.html
+200  18447  css/style.css
+200  14866  data/team-data.js
+200  3280  js/main.js
+200  5009  js/schedule.js
+200  2133  js/squad.js
+200  1562  js/legends.js
+200  2338  images/favicon-32.png
+200  12648  images/apple-touch-icon.png
+200  110119  images/og-image.jpg
